@@ -13,6 +13,7 @@ public class BynarySearch {
     ShowArray(generatedArray);
     generatedArray = SortArray(generatedArray);
     ShowArray(generatedArray);
+    binarySearch(generatedArray, 0, generatedArray.length-1,28 );
     }
 
     public static int[] CreateArray() {
@@ -47,5 +48,26 @@ public class BynarySearch {
             count++;
         }
         System.out.println(" ");
+    }
+
+    public static void binarySearch(int[] arr, int first, int last, int item) {
+        int position = (first+last)/2;
+        int comparisonCount = 1;
+        while((arr[position] > item) && (first <= last)) {
+            comparisonCount++;
+            if(arr[position] > item) {
+                last = position -1;
+            } else {
+                first = position + 1;
+            }
+            position = (first+last)/2;
+        }
+        if (first <= last) {
+            System.out.println(item + " is " + ++position + " item of array");
+            System.out.println("Method of binary search find number after " + comparisonCount + " comparisons");
+        } else {
+            System.out.println("Item was not found in array. Method of binary searching finished work after " + comparisonCount + " comparisons");
+        }
+
     }
 }
