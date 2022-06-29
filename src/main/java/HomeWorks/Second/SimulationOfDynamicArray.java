@@ -5,6 +5,7 @@
 
 package HomeWorks.Second;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SimulationOfDynamicArray {
@@ -36,10 +37,17 @@ public class SimulationOfDynamicArray {
         System.out.println("");
     }
 
-    static int GetNumber(){
-        Scanner iScanner = new Scanner(System.in);
-        System.out.println("Insert integer number - i will make triangular number!");
-        return iScanner.nextInt();
+    public static int GetNumber() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Insert your number, I will make Triangular Number!");
+        try {
+            return in.nextInt();
+        }
+        catch (InputMismatchException e) {
+            System.out.println("Try again!");
+            GetNumber();
+        }
+        return 0;
     }
 
     static int TriangularNumber(int checkedNumber){
