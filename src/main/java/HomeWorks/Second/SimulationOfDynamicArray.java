@@ -10,9 +10,13 @@ import java.util.Scanner;
 public class SimulationOfDynamicArray {
     public static void main(String[] args) {
 
-        String userNumber = GetNumber();
-        if(isCorrect(userNumber)) {
-
+        int userNumber = GetNumber();
+        int[] array = new int[0];
+        int count = 1;
+        while(count <= userNumber) {
+            array = CreateNewArray(array, TriangularNumber(count));
+            ShowArray(array);
+            count++;
         }
     }
 
@@ -25,26 +29,22 @@ public class SimulationOfDynamicArray {
         return newArray;
     }
 
-    static String GetNumber(){
+    public static void ShowArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%d ",array[i]);
+        }
+        System.out.println("");
+    }
+
+    static int GetNumber(){
         Scanner iScanner = new Scanner(System.in);
         System.out.println("Insert integer number - i will make triangular number!");
-        return iScanner.nextLine();
+        return iScanner.nextInt();
     }
 
-    static boolean isCorrect(String line){
-        try {
-            if(Integer.parseInt(line)>0)
-                return true;
-        }
-        catch (NumberFormatException e){
-            return false;
-        }
-        return false;
-    }
-
-    static int TriangularNumber(String checkedNumber){
-        float intNumber = Float.parseFloat(checkedNumber);
-        return Math.round(intNumber/2*(intNumber+1));
+    static int TriangularNumber(int checkedNumber){
+        float floatNumber = Float.parseFloat(String.valueOf(checkedNumber));
+        return (int) (floatNumber/2*(floatNumber+1));
     }
 
 }
