@@ -4,22 +4,25 @@
  */
 
 package HomeWorks.Second;
-
-import java.math.*;
+import java.util.Scanner;
 public class BynarySearch {
 
     public static void main(String[] args) {
-    int[] generatedArray = CreateArray();
-    ShowArray(generatedArray);
-    generatedArray = SortArray(generatedArray);
-    ShowArray(generatedArray);
-    binarySearch(generatedArray, 0, generatedArray.length-1,28 );
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Make a number, from 0 till 100: ");
+        int number = in.nextInt();
+        int[] generatedArray = CreateArray();
+        ShowArray(generatedArray);
+        generatedArray = SortArray(generatedArray);
+        ShowArray(generatedArray);
+        binarySearch(generatedArray, 0, generatedArray.length-1,number, 1);
     }
 
     public static int[] CreateArray() {
-        int[] array = new int[(int) ((Math.random())*20)+20];
+        int[] array = new int[(int) ((Math.random())*40)+40];
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) ((Math.random())*20)+20;
+            array[i] = (int) ((Math.random())*101);
         }
         return array;
     }
@@ -50,24 +53,19 @@ public class BynarySearch {
         System.out.println(" ");
     }
 
-    public static void binarySearch(int[] arr, int first, int last, int item) {
-        int position = (first+last)/2;
-        int comparisonCount = 1;
-        while((arr[position] > item) && (first <= last)) {
-            comparisonCount++;
-            if(arr[position] > item) {
-                last = position -1;
-            } else {
-                first = position + 1;
-            }
-            position = (first+last)/2;
-        }
-        if (first <= last) {
-            System.out.println(item + " is " + ++position + " item of array");
-            System.out.println("Method of binary search find number after " + comparisonCount + " comparisons");
+    public static void binarySearch(int[] arr, int first, int last, int item, int comparisonCount) {
+        int position = (first + last) / 2;
+        if (first > last) {
+            System.out.println("Item was not founded");
+            return;
         } else {
-            System.out.println("Item was not found in array. Method of binary searching finished work after " + comparisonCount + " comparisons");
+            if (arr[position] > item) {
+                binarySearch(arr, first, position - 1, item, ++comparisonCount);
+            } else if (arr[position] < item) {
+                binarySearch(arr, position + 1, last, item, ++comparisonCount);
+            } else {
+                System.out.printf("%d is %d item of array and it was done on %d trying", item, ++position, comparisonCount);
+            }
         }
-
     }
 }
