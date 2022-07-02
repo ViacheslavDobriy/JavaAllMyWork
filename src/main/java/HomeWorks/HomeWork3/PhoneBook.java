@@ -23,10 +23,11 @@ public class PhoneBook {
         phoneBook = AddNewNumber(GetSurname(), phoneBook);
 
     }
+    Set<String> names = phoneBook.keySet();
+    Iterator<String> i = names.iterator();
+    for(String count : names) {
 
-    for (int i: phoneBook.values()) {
-
-        System.out.println(i);
+        System.out.printf("%s - %d\n", i.next(), phoneBook.get(count));
 
         }
     }
@@ -35,7 +36,7 @@ public class PhoneBook {
     public static Map<String, Integer> AddNewNumber(String surname, Map<String, Integer> phoneBook) {
 
             if(phoneBook.containsKey(surname)) {
-                phoneBook.put(surname + GetName(), GetPhone());
+                phoneBook.put(surname + " " + GetName(), GetPhone());
             } else {
                 phoneBook.put(surname, GetPhone());
             }
