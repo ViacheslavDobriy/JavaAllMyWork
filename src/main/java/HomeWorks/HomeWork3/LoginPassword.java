@@ -31,6 +31,8 @@ public class LoginPassword {
         List<String> data = new ArrayList<>();
         data.add(login);
         data.add(password);
+        data.add("login");
+        data.add("password");
         int attempts = 0;
         int iterator = 0;
         Login(attempts, data, iterator);
@@ -40,15 +42,16 @@ public class LoginPassword {
         Scanner insertLogin = new Scanner(System.in);
         try {
 
-            System.out.printf("You have %d attempts. Insert your login - ", 6-attempt);
+            System.out.printf("You have %d attempts. Insert your " + loginPassword.get(i+2), 6-attempt);
 
             if(!loginPassword.get(i).equals(insertLogin.nextLine())) {
 
-                throw new AttemptIsEmpty("Incorrect login!");
+                throw new AttemptIsEmpty("Incorrect " + loginPassword.get(i+2) + "!");
 
             } else {
 
-                System.out.println("Login is correct!");
+                System.out.println(loginPassword.get(i+2) + " is correct!");
+
                 if(i==0) {
 
                     Login(attempt, loginPassword, ++i);
@@ -62,6 +65,7 @@ public class LoginPassword {
             } catch (AttemptIsEmpty x) {
 
             System.out.println(x.toString());
+
             if(attempt < 5) {
 
                 if(attempt > 1) {
