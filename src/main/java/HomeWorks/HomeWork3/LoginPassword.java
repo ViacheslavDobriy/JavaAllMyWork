@@ -6,6 +6,8 @@
  */
 package HomeWorks.HomeWork3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -25,25 +27,37 @@ public class LoginPassword {
 
     public static void main(String[] args) throws InterruptedException {
         String login = "Slava";
-//        int password = 54321;
+        String password = "54321";
+        List<String> data = new ArrayList<>();
+        data.add(login);
+        data.add(password);
         int attempts = 0;
-        Login(attempts, login);
+        int iterator = 0;
+        Login(attempts, data, iterator);
     }
 
-    public static void Login(int attempt, String login) throws InterruptedException {
+    public static void Login(int attempt, List<String> loginPassword, int i) throws InterruptedException {
         Scanner insertLogin = new Scanner(System.in);
         try {
 
-            System.out.printf("You still have %d attempts. Insert your login - ", 6-attempt);
+            System.out.printf("You have %d attempts. Insert your login - ", 6-attempt);
 
-            if(!login.equals(insertLogin.nextLine())) {
+            if(!loginPassword.get(i).equals(insertLogin.nextLine())) {
 
                 throw new AttemptIsEmpty("Incorrect login!");
 
             } else {
 
-                System.out.println("Validation is complete");
+                System.out.println("Login is correct!");
+                if(i==0) {
 
+                    Login(attempt, loginPassword, ++i);
+
+                    } else {
+
+                    System.out.println("Validation is success!");
+
+                    }
                 }
             } catch (AttemptIsEmpty x) {
 
@@ -56,11 +70,11 @@ public class LoginPassword {
                     TimeUnit.SECONDS.sleep(5);
                 }
 
-                Login(attempt + 1, login);
+                Login(attempt + 1, loginPassword, i);
 
+            } else {
+                System.out.println("Validation is failure");
             }
-            System.out.println("Validation is failure");
-
         }
     }
 
