@@ -45,12 +45,11 @@ public class SimulationOfDynamicArray {
         }
         catch (InputMismatchException e) {
             System.out.println("Try again!");
-            GetNumber();
+            return GetNumber();
         }
-        return 0;
     }
 
-    static int TriangularNumber(int checkedNumber){
+    static int TriangularNumber(int checkedNumber) {
         float floatNumber = Float.parseFloat(String.valueOf(checkedNumber));
         return (int) (floatNumber/2*(floatNumber+1));
     }
