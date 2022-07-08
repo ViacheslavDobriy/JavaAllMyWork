@@ -17,10 +17,9 @@ public class SearchingSolution {
         expression = expression.replace(" ", "");
         String[] add = expression.split("");
         String[] positions = unknownPosition(add);
-        System.out.println(Arrays.toString(positions));
-        String countStr = "0000";
-        String[] count = countStr.split("");
-        System.out.println(Solution(add, positions,count));
+        String[] replacement = FirstReplacement(positions);
+        System.out.println(Arrays.toString(positions)); // чтобы посмотреть на каких позициях в строке знаки вопроса
+        System.out.println(Solution(add, positions,replacement));
     }
 
 
@@ -43,7 +42,7 @@ public class SearchingSolution {
         int intNumber1 = Integer.parseInt(number1);
 
         String number2 = "";
-        iterator = iterator+2;
+        iterator = iterator+1;
         for(int i = iterator; !Objects.equals(numbers[i], "="); i++) {
 
             number2 = number2 + numbers[i];
@@ -51,46 +50,72 @@ public class SearchingSolution {
 
         }
         int intNumber2 = Integer.parseInt(number2);
-
         String number3 = "";
-        iterator = iterator+2;
+        iterator = iterator+1;
         for (int i = iterator; i < numbers.length ; i++) {
 
             number3 = number3 + numbers[i];
 
         }
         int intNumber3 = Integer.parseInt(number3);
-
         if(intNumber1 + intNumber2 == intNumber3) {
-            return Arrays.toString(numbers);
+            System.out.println("All is fine");
+            return Arrays.toString(numbers); // здесь подозреваю функция не возвращает из-за рекурсии
         } else {
 
             String[] newCount = CreateCountRecursion(count, count.length);
-            Solution(numbers, positions, newCount);
+            if(!Objects.equals(newCount[0], "s")) {
+                Solution(numbers, positions, newCount);
+            } else {
+                return "There is no solution"; // этот return тоже не работает, даже если решений очевидно нет
+            }
 
         }
-    return "There is no solution";
+    return Arrays.toString(numbers).replace("[", "").replace("]", "").replace(",", "");
     }
 
+    public static String[] FirstReplacement(String[] replacements) {
 
+        String result = "";
+        for (int i = 0; i < replacements.length; i++) {
+            result += "0";
+        }
+        return result.split("");
+    }
     public static String[] CreateCountRecursion(String[] oldCount, int lengthCount) {
-        if (Objects.equals(oldCount[lengthCount - 1], "9")) {
-            oldCount[lengthCount-1] = "0";
-            CreateCountRecursion(oldCount, lengthCount-1);
-        } else {
-            oldCount[lengthCount-1] = Integer.parseInt(oldCount[lengthCount-1])+1 + "";
+        if(lengthCount != 0) {
+            if (Objects.equals(oldCount[lengthCount - 1], "9")) {
+                if (lengthCount != 1) {
+                    oldCount[lengthCount - 1] = "0";
+                    CreateCountRecursion(oldCount, lengthCount - 1);
+                } else {
+                    return "stop".split("");
+                }
+            } else {
+                oldCount[lengthCount - 1] = Integer.parseInt(oldCount[lengthCount - 1]) + 1 + "";
+            }
         }
         return oldCount;
     }
 
     public static String[] unknownPosition (String[] line) {
-        String positions = "";
+
+        int count = 0;
         for (int i = 0; i < line.length; i++) {
             if (Objects.equals(line[i], "?")) {
-                positions = positions + i;
+                count++;
             }
         }
-        return positions.split("");
+
+        String[] positions = new String[count];
+        int iterator = 0;
+        for (int i = 0; i < line.length; i++) {
+            if (Objects.equals(line[i], "?")) {
+                positions[iterator] = i + "";
+                iterator++;
+            }
+        }
+        return positions;
     }
     public static String GetExpression() {
 
