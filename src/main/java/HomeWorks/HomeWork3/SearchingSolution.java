@@ -16,42 +16,81 @@ public class SearchingSolution {
         String expression = GetExpression();
         expression = expression.replace(" ", "");
         String[] add = expression.split("");
-        System.out.println(unknownPosition(add));
-//        int[] first = ToArray("2?4", 2);
-//        int[] second = ToArray("32?",1);
-//        int[] result = ToArray("5?6",2);
-//        System.out.println(Solution(first, second, result, 0));
+        String[] positions = unknownPosition(add);
+        System.out.println(Arrays.toString(positions));
+        String countStr = "0000";
+        String[] count = countStr.split("");
+        System.out.println(Solution(add, positions,count));
     }
 
-    public static int[] ToArray (String number, int pos) {
-        int[] numberPos = new int[2];
-        numberPos[0] = Integer.parseInt(number.replace("?","0"));
-        numberPos[1] = pos;
-        return numberPos;
-    }
 
     public static String Solution (String[] numbers, String[] positions, String[] count) {
-        for (int i = 0; i < positions.length; i++) {
-            numbers[Integer.parseInt(positions[i])] = count[i];
-            }
-        StringBuilder countNew = new StringBuilder();
-        for (int i = 0; i < count.length; i++) {
-            countNew.append(count[i]);
-        }
-        int newCount = Integer.parseInt(String.valueOf(countNew));
-        if (newCount)
-        }
 
+        for (int i = 0; i < positions.length; i++) {
+
+            numbers[Integer.parseInt(positions[i])] = count[i];
+
+            }
+
+        String number1 = "";
+        int iterator = 0;
+        for(int i = 0; !Objects.equals(numbers[i], "+"); i++) {
+
+            number1 = number1 + numbers[i];
+            iterator++;
+
+        }
+        int intNumber1 = Integer.parseInt(number1);
+
+        String number2 = "";
+        iterator = iterator+2;
+        for(int i = iterator; !Objects.equals(numbers[i], "="); i++) {
+
+            number2 = number2 + numbers[i];
+            iterator++;
+
+        }
+        int intNumber2 = Integer.parseInt(number2);
+
+        String number3 = "";
+        iterator = iterator+2;
+        for (int i = iterator; i < numbers.length ; i++) {
+
+            number3 = number3 + numbers[i];
+
+        }
+        int intNumber3 = Integer.parseInt(number3);
+
+        if(intNumber1 + intNumber2 == intNumber3) {
+            return Arrays.toString(numbers);
+        } else {
+
+            String[] newCount = CreateCountRecursion(count, count.length);
+            Solution(numbers, positions, newCount);
+
+        }
+    return "There is no solution";
     }
 
-    public static String unknownPosition (String[] line) {
+
+    public static String[] CreateCountRecursion(String[] oldCount, int lengthCount) {
+        if (Objects.equals(oldCount[lengthCount - 1], "9")) {
+            oldCount[lengthCount-1] = "0";
+            CreateCountRecursion(oldCount, lengthCount-1);
+        } else {
+            oldCount[lengthCount-1] = Integer.parseInt(oldCount[lengthCount-1])+1 + "";
+        }
+        return oldCount;
+    }
+
+    public static String[] unknownPosition (String[] line) {
         String positions = "";
         for (int i = 0; i < line.length; i++) {
             if (Objects.equals(line[i], "?")) {
                 positions = positions + i;
             }
         }
-        return positions;
+        return positions.split("");
     }
     public static String GetExpression() {
 
