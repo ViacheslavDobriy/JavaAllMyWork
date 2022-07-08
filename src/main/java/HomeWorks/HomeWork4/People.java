@@ -9,7 +9,7 @@ public abstract class People {
     private int age;
     private int power;
 
-    private People(String name, int age, int power) {
+    public People(String name, int age, int power) {
         this.name = name;
         this.age = age;
         this.power = power;
@@ -17,18 +17,18 @@ public abstract class People {
     public People() {
         this("Slava", 26, 100);
     }
+
+    public People(String name) {
+        this.name = name;
+    }
     public String GetName () {
 
-//        Scanner name1 = new Scanner(System.in);
-//        return name1.nextLine();
         return name;
     }
 
     public int GetAge () {
-
-//        Scanner age = new Scanner(System.in);
-//        return age.nextInt();
-        return age;
+        Random age = new Random();
+        return age.nextInt(18, 75);
     }
 
     public int SetPower () {
