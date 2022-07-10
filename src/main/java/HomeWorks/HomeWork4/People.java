@@ -1,7 +1,6 @@
 package HomeWorks.HomeWork4;
 
 import java.util.Random;
-import java.util.Scanner;
 
 public abstract class People {
 
@@ -45,6 +44,10 @@ public abstract class People {
 
     public int GetPower () {
         return power;
+    }
+
+    public void DecreasePower (int powerRequirements) {
+        this.power = this.power - powerRequirements;
     }
 
 }

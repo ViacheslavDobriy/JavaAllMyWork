@@ -20,7 +20,10 @@ public class Obstacle extends ObstacleCourse{
 
     }
 
+    @Override
     public void GoObstacle(Team team) {
+
+        team.AfterObstacle(powerRequirements);
 
     }
 

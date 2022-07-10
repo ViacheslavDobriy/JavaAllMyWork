@@ -6,4 +6,6 @@ public abstract class ObstacleCourse {
     public abstract int SetPowerRequirements();
     public abstract String GetObstacle();
     public abstract int GetPowerRequirements();
+
+    public abstract void GoObstacle(Team team);
 }

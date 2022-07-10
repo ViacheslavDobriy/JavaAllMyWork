@@ -19,6 +19,15 @@ public abstract class Team {
 
             System.out.printf("%s is %d years old and with %d power\n",team[i].GetName(), team[i].GetAge(), team[i].GetPower());
         }
-
     }
+
+    public void AfterObstacle(int PowerRequirements) {
+
+        for (int i = 0; i < team.length; i++) {
+
+            team[i].DecreasePower(PowerRequirements);
+
+        }
+    }
+
 }
