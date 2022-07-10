@@ -19,21 +19,32 @@ public abstract class People {
     }
 
     public People(String name) {
+
         this.name = name;
+        this.age = SetAge();
+        this.power = SetPower();
     }
     public String GetName () {
 
         return name;
     }
 
-    public int GetAge () {
+    public int SetAge () {
         Random age = new Random();
         return age.nextInt(18, 75);
+    }
+
+    public int GetAge () {
+        return age;
     }
 
     public int SetPower () {
         Random power = new Random();
         return power.nextInt(10, 100);
+    }
+
+    public int GetPower () {
+        return power;
     }
 
 }
