@@ -12,15 +12,6 @@ public abstract class Team {
 
     }
 
-//    public Team() {
-//
-//        this("Cool Team", {new People("Slava"){}, new People("Nastya"){}, new People("Oleg"){}});
-//    }
-//    public Team(String teamName) {
-//
-//        this(teamName, {People.});
-//    }
-
     public void InfoTeam() {
 
         System.out.println(teamName);

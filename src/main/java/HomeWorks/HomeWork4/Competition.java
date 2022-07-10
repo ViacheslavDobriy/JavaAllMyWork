@@ -23,6 +23,12 @@ public class Competition {
 
         team1.InfoTeam();
         team2.InfoTeam();
+
+        ObstacleCourse obstacle1 = new Obstacle();
+        obstacle1.SetObstacle();
+        obstacle1.SetPowerRequirements();
+        System.out.printf("%s need %d power", obstacle1.GetObstacle(), obstacle1.GetPowerRequirements());
+
     }
 
 }
