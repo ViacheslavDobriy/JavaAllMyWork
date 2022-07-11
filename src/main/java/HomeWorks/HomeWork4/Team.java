@@ -12,6 +12,10 @@ public abstract class Team {
 
     }
 
+    public String GetTeamName() {
+        return teamName;
+    }
+
     public void InfoTeam() {
 
         System.out.println(teamName);
@@ -28,6 +32,21 @@ public abstract class Team {
             team[i].DecreasePower(PowerRequirements);
 
         }
+    }
+
+    public int HowManyPoints() {
+
+        int pointsTeam = 0;
+
+        for (int i = 0; i < team.length; i++) {
+
+            if (team[i].GetPower() >= 0) {
+
+                pointsTeam = pointsTeam + 1;
+            }
+
+        }
+        return pointsTeam;
     }
 
 }
