@@ -20,8 +20,11 @@ public class Music {
     public static void main(String[] args) {
 
         List<String> genres = CreateGenres();
-        Map<String, Integer> songRates = CreateSongNames();
+        String[] allSongs = new String[] {"Boshki Dymyatsa","Sinimi Zheltymi Krasnymi","Highway To Hell","Sonet","Rayda","Since U Been Gone","La Grange","My Heart","Someday","Shape Of You","A cap","Passport","Controller","Notebook","Troubles","Phone","Ring","Glass water","Lemonade","A ram zam zam","MicroWave","Room","Alone","Alies","Table face","Door opening","bedroom","Bless you","Young and brave","Simple","Programming"};
+        Map<String, Integer> songRates = CreateSongNames(allSongs);
         Map<String, Map<String, Integer>> playList = FillMap(genres, songRates);
+        System.out.println(playList);
+        playList = Sort(playList);
         System.out.println(playList);
 
     }
@@ -39,19 +42,13 @@ public class Music {
 
     }
 
-    public static Map<String, Integer> CreateSongNames() {
+    public static Map<String, Integer> CreateSongNames(String[] songs) {
 
         Map<String, Integer> songNames = new HashMap<>();
-        songNames.put("Boshki Dymyatsa", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Sinimi Zheltymi Krasnymi", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Highway To Hell", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Sonet", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Rayda", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Since U Been Gone", (int) ((Math.random() * 1001) + 1));
-        songNames.put("La Grange", (int) ((Math.random() * 1001) + 1));
-        songNames.put("My Heart", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Someday", (int) ((Math.random() * 1001) + 1));
-        songNames.put("Shape Of You", (int) ((Math.random() * 1001) + 1));
+        for (int i = 0; i < songs.length; i++) {
+            songNames.put(songs[i],(int) ((Math.random() * 1001) + 1));
+        }
+
         return songNames;
 
     }
@@ -89,31 +86,59 @@ public class Music {
         }
         return playList;
     }
-}
-//    public static void Sort(Map<String, Map<String, Integer>> noSorted) {
-//        List<String> howManyListened = new ArrayList<>();
-//        for (Map.Entry<String, Map<String, Integer>> item:noSorted.entrySet()) {
-//            String[] music = item.getValue().keySet().toArray(new String[item.getValue().keySet().size()]);
-//            for (String str: music) {
-//                System.out.println(str);
-//            }
-//            int temp = 0;
-//            for (int i = 0; i < music.length; i++) {
-//                for (int j = i; j < music.length; j++) {
-//                    int max = item.getValue().get(music[j]);
-//                    if(max<item.getValue().get(music[j])) {
-//
-//                        temp = j;
-//                        max = item.getValue().get(music[j]);
-//
-//
-//                    } else {
-//
-//                    }
-//                }
-//                howManyListened.add(music[temp]);
-//            }
-//        }
-//        System.out.println(howManyListened);
-//    }
 
+    public static Map<String, Map<String, Integer>> Sort(Map<String, Map<String, Integer>> noSorted) {
+
+        Map<String, Map<String, Integer>> sorted = new LinkedHashMap<>();
+        List<String> stringList = new ArrayList<>(noSorted.keySet());
+        int count = 0;
+        for (Map.Entry<String, Map<String, Integer>> item : noSorted.entrySet()) {
+
+            List<String> listOfKeys = new ArrayList<>(item.getValue().keySet());
+            List<Integer> listOfValues = new ArrayList<>(item.getValue().values());
+            Map<String , Integer> songs = new LinkedHashMap<>(SortLists(listOfKeys, listOfValues));
+            List<String> newListOfKeys = new ArrayList<>(songs.keySet());
+            List<Integer> newListOfValues = new ArrayList<>(songs.values());
+            if(sorted.containsKey(stringList.get(count))) {
+                sorted.get(stringList.get(count)).put(newListOfKeys.get(count),newListOfValues.get(count));
+            } else {
+                sorted.put(stringList.get(count), songs);
+            }
+
+            count++;
+        }
+        return sorted;
+    }
+
+    public static Map<String , Integer> SortLists(List<String> keys, List<Integer> values) {
+
+        Map<String , Integer> result = new LinkedHashMap<>();
+        List<String> newKeys = new ArrayList<>();
+        List<Integer> newValues = new ArrayList<>();
+
+        while (!values.isEmpty()) {
+
+            int max = values.get(0);
+            int indexMax = 0;
+
+            for (int i = 0; i < values.size(); i++) {
+
+                if (max < values.get(i)) {
+                    max = values.get(i);
+                    indexMax = i;
+                }
+            }
+            newValues.add(max);
+            newKeys.add(keys.get(indexMax));
+            values.remove(indexMax);
+            keys.remove(indexMax);
+        }
+
+        for (int i = 0; i < newValues.size(); i++) {
+            result.put(newKeys.get(i), newValues.get(i));
+            System.out.println(result);
+        }
+        return result;
+    }
+
+}
