@@ -23,9 +23,10 @@ public class Music {
         String[] allSongs = new String[] {"Boshki Dymyatsa","Sinimi Zheltymi Krasnymi","Highway To Hell","Sonet","Rayda","Since U Been Gone","La Grange","My Heart","Someday","Shape Of You","A cap","Passport","Controller","Notebook","Troubles","Phone","Ring","Glass water","Lemonade","A ram zam zam","MicroWave","Room","Alone","Alies","Table face","Door opening","bedroom","Bless you","Young and brave","Simple","Programming"};
         Map<String, Integer> songRates = CreateSongNames(allSongs);
         Map<String, Map<String, Integer>> playList = FillMap(genres, songRates);
-        System.out.println(playList);
+//        System.out.println(playList);
         playList = Sort(playList);
         System.out.println(playList);
+        System.out.println(DancePlaylist(playList));
 
     }
 
@@ -138,6 +139,32 @@ public class Music {
             result.put(newKeys.get(i), newValues.get(i));
             System.out.println(result);
         }
+        return result;
+    }
+
+    public static List<String> DancePlaylist (Map<String ,Map<String , Integer>> MusicData) {
+        Map<String , Integer> hipHop = new LinkedHashMap<>(MusicData.get("Hip-Hop"));
+        List<String> listKeysHipHop = new ArrayList<>(hipHop.keySet());
+        List<Integer> listValuesHipHop = new ArrayList<>(hipHop.values());
+
+        Map<String , Integer> pop = new LinkedHashMap<>(MusicData.get("Pop"));
+        List<String> listKeysPop = new ArrayList<>(pop.keySet());
+        List<Integer> listValuesPop = new ArrayList<>(pop.values());
+
+        List<String> result = new ArrayList<>();
+
+        int countForHipHop = 0;
+        int countForPop = 0;
+        for (int i = 0; i < 5; i++) {
+            if(listValuesHipHop.get(countForHipHop)>=listValuesPop.get(countForPop)) {
+                result.add(listKeysHipHop.get(countForHipHop));
+                countForHipHop++;
+            } else {
+                result.add(listKeysPop.get(countForPop));
+                countForPop++;
+            }
+        }
+        System.out.println("Top of the dance music:");
         return result;
     }
 
