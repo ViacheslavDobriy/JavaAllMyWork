@@ -20,21 +20,26 @@ public class Music {
     public static void main(String[] args) {
 
         List<String> genres = CreateGenres();
-        String[] allSongs = new String[] {"Boshki Dymyatsa","Sinimi Zheltymi Krasnymi","Highway To Hell","Sonet","Rayda","Since U Been Gone","La Grange","My Heart","Someday","Shape Of You","A cap","Passport","Controller","Notebook","Troubles","Phone","Ring","Glass water","Lemonade","A ram zam zam","MicroWave","Room","Alone","Alies","Table face","Door opening","bedroom","Bless you","Young and brave","Simple","Programming"};
+        String[] allSongs = new String[] {"Boshki Dymyatsa","Sinimi Zheltymi Krasnymi","Highway To Hell","Sonet","Rayda","Since U Been Gone","La Grange","My Heart","Someday","Shape Of You","A cap","Passport","Controller","Notebook","Troubles","Phone","Ring","Glass water","Lemonade","A ram zam zam","MicroWave","Room","Alone","Alies","Table face","Door opening","bedroom","Bless you","Young and brave","Simple","Programming", "Summer", "poldnik", "Cause", "Sharp", "Exit", "Gift", "Defeat", "Winner", "Victory", "Quiz", "Fifa", "Telega", "Belly", "Knowledge", "AS far as i know", "Celebrate", "Person", "Dream", "English", "Disney", "Silent", "Night", "Tiger", "Amazon", "Fish", "Mac", "MC", "Fair", "Animoto", "Selfish", "Game", "Hi", "Bye", "See you", "Ghost", "Star", "War", "Yandex", "Witcher", "Loser", "End", "Sky", "Cat", "Hand", "Jewelry", "Lunch"};
         Map<String, Integer> songRates = CreateSongNames(allSongs);
         Map<String, Map<String, Integer>> playList = FillMap(genres, songRates);
         playList = Sort(playList);
         System.out.println(playList);
+        List<String> vipPlayList;
         System.out.println("Which playlist do you want listen?");
         System.out.println("Insert 1 if dance playlist is interested for you.");
         System.out.println("Insert 2 if dream playlist is interested for you. Music for sleep.");
         Scanner choice = new Scanner(System.in);
         switch (choice.nextInt()) {
             case (1):
-                System.out.println(DancePlaylist(playList));
+                vipPlayList = DancePlaylist(playList);
+                System.out.println(vipPlayList);
+                System.out.println(ShakeShake(vipPlayList));
                 break;
             case (2):
-                System.out.println(SongsForDream(playList));
+                vipPlayList = SongsForDream(playList);
+                System.out.println(vipPlayList);
+                System.out.println(ShakeShake(vipPlayList));
                 break;
             default:
                 System.out.println("Next time insert legal number!");
@@ -165,15 +170,19 @@ public class Music {
 
         List<String> result = new ArrayList<>();
 
-        int countForHipHop = 0;
-        int countForPop = 0;
-        for (int i = 0; i < (listValuesPop.size() + listValuesHipHop.size())/2 ; i++) {
-            if(listValuesHipHop.get(countForHipHop)>=listValuesPop.get(countForPop)) {
-                result.add(listKeysHipHop.get(countForHipHop));
-                countForHipHop++;
-            } else {
-                result.add(listKeysPop.get(countForPop));
-                countForPop++;
+        if(listValuesHipHop.get(0)>=listValuesPop.get(0)) {
+            for (int i = 0; i < 5; i++) {
+
+                result.add(listKeysHipHop.get(i));
+                result.add(listKeysPop.get(i));
+
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+
+                result.add(listKeysPop.get(i));
+                result.add(listKeysHipHop.get(i));
+
             }
         }
         System.out.println("Top of the dance music:");
@@ -190,21 +199,38 @@ public class Music {
         List<String> listKeysClassic = new ArrayList<>(classic.keySet());
         List<Integer> listValuesClassic = new ArrayList<>(classic.values());
 
+        System.out.println(relax);
+        System.out.println(classic);
+
         List<String> result = new ArrayList<>();
 
-        int countForClassic = 0;
-        int countForRelax = 0;
-        for (int i = 0; i < (listValuesRelax.size() + listValuesClassic.size())/2 ; i++) {
-            if(listValuesClassic.get(countForClassic)>=listValuesRelax.get(countForRelax)) {
-                result.add(listKeysClassic.get(countForClassic));
-                countForClassic++;
-            } else {
-                result.add(listKeysRelax.get(countForRelax));
-                countForRelax++;
+        if(listValuesClassic.get(0)>=listValuesRelax.get(0)) {
+            for (int i = 0; i < 5; i++) {
+
+                result.add(listKeysClassic.get(i));
+                result.add(listKeysRelax.get(i));
+
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+
+                result.add(listKeysRelax.get(i));
+                result.add(listKeysClassic.get(i));
+
             }
         }
         System.out.println("Top of the music for sleep:");
         return result;
     }
 
+    public static List<String> ShakeShake (List<String> sorted) {
+
+        List<String> shaked = new ArrayList<>();
+        while (!sorted.isEmpty()) {
+            int random = (int) (Math.random()* sorted.size());
+            shaked.add(sorted.get(random));
+            sorted.remove(random);
+        }
+        return shaked;
+    }
 }
