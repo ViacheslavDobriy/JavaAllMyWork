@@ -23,11 +23,22 @@ public class Music {
         String[] allSongs = new String[] {"Boshki Dymyatsa","Sinimi Zheltymi Krasnymi","Highway To Hell","Sonet","Rayda","Since U Been Gone","La Grange","My Heart","Someday","Shape Of You","A cap","Passport","Controller","Notebook","Troubles","Phone","Ring","Glass water","Lemonade","A ram zam zam","MicroWave","Room","Alone","Alies","Table face","Door opening","bedroom","Bless you","Young and brave","Simple","Programming"};
         Map<String, Integer> songRates = CreateSongNames(allSongs);
         Map<String, Map<String, Integer>> playList = FillMap(genres, songRates);
-//        System.out.println(playList);
         playList = Sort(playList);
         System.out.println(playList);
-        System.out.println(DancePlaylist(playList));
-
+        System.out.println("Which playlist do you want listen?");
+        System.out.println("Insert 1 if dance playlist is interested for you.");
+        System.out.println("Insert 2 if dream playlist is interested for you. Music for sleep.");
+        Scanner choice = new Scanner(System.in);
+        switch (choice.nextInt()) {
+            case (1):
+                System.out.println(DancePlaylist(playList));
+                break;
+            case (2):
+                System.out.println(SongsForDream(playList));
+                break;
+            default:
+                System.out.println("Next time insert legal number!");
+        }
     }
 
     public static List<String> CreateGenres() {
@@ -39,6 +50,7 @@ public class Music {
         genres.add("Classic");
         genres.add("Rock");
         genres.add("DupStep");
+        genres.add("Relax");
         return genres;
 
     }
@@ -68,10 +80,10 @@ public class Music {
             temp.put(keyList.get(i), valueList.get(i));
 
             if (playList.isEmpty()) {
-                playList.put(genres.get((int) (Math.random() * 6)), temp);
+                playList.put(genres.get((int) (Math.random() * genres.size())), temp);
             } else {
                 boolean find = false;
-                int forListGenre = (int) (Math.random() * 6);
+                int forListGenre = (int) (Math.random() * genres.size());
                 for (int j = 0; j < playList.size(); j++) {
 
                     if (Objects.equals(genres.get(forListGenre), keyPlayList.get(j))) {
@@ -137,7 +149,7 @@ public class Music {
 
         for (int i = 0; i < newValues.size(); i++) {
             result.put(newKeys.get(i), newValues.get(i));
-            System.out.println(result);
+
         }
         return result;
     }
@@ -155,7 +167,7 @@ public class Music {
 
         int countForHipHop = 0;
         int countForPop = 0;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < (listValuesPop.size() + listValuesHipHop.size())/2 ; i++) {
             if(listValuesHipHop.get(countForHipHop)>=listValuesPop.get(countForPop)) {
                 result.add(listKeysHipHop.get(countForHipHop));
                 countForHipHop++;
@@ -165,6 +177,33 @@ public class Music {
             }
         }
         System.out.println("Top of the dance music:");
+        return result;
+    }
+
+    static public List<String> SongsForDream (Map<String , Map<String , Integer>> map) {
+
+        Map<String , Integer> relax = new LinkedHashMap<>(map.get("Relax"));
+        List<String> listKeysRelax = new ArrayList<>(relax.keySet());
+        List<Integer> listValuesRelax = new ArrayList<>(relax.values());
+
+        Map<String , Integer> classic = new LinkedHashMap<>(map.get("Classic"));
+        List<String> listKeysClassic = new ArrayList<>(classic.keySet());
+        List<Integer> listValuesClassic = new ArrayList<>(classic.values());
+
+        List<String> result = new ArrayList<>();
+
+        int countForClassic = 0;
+        int countForRelax = 0;
+        for (int i = 0; i < (listValuesRelax.size() + listValuesClassic.size())/2 ; i++) {
+            if(listValuesClassic.get(countForClassic)>=listValuesRelax.get(countForRelax)) {
+                result.add(listKeysClassic.get(countForClassic));
+                countForClassic++;
+            } else {
+                result.add(listKeysRelax.get(countForRelax));
+                countForRelax++;
+            }
+        }
+        System.out.println("Top of the music for sleep:");
         return result;
     }
 
