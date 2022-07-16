@@ -32,12 +32,14 @@ public class Music {
         Scanner choice = new Scanner(System.in);
         switch (choice.nextInt()) {
             case (1):
-                vipPlayList = DancePlaylist(playList);
+                vipPlayList = ResultPlaylist(playList, genres.get(0), genres.get(1));
+                System.out.println("Top of the dance music:");
                 System.out.println(vipPlayList);
                 System.out.println(ShakeShake(vipPlayList));
                 break;
             case (2):
-                vipPlayList = SongsForDream(playList);
+                vipPlayList = ResultPlaylist(playList, genres.get(3), genres.get(6));
+                System.out.println("Top of the music for sleep:");
                 System.out.println(vipPlayList);
                 System.out.println(ShakeShake(vipPlayList));
                 break;
@@ -159,12 +161,13 @@ public class Music {
         return result;
     }
 
-    public static List<String> DancePlaylist (Map<String ,Map<String , Integer>> MusicData) {
-        Map<String , Integer> hipHop = new LinkedHashMap<>(MusicData.get("Hip-Hop"));
+    public static List<String> ResultPlaylist (Map<String ,Map<String , Integer>> MusicData, String genre1, String genre2) {
+
+        Map<String , Integer> hipHop = new LinkedHashMap<>(MusicData.get(genre1));
         List<String> listKeysHipHop = new ArrayList<>(hipHop.keySet());
         List<Integer> listValuesHipHop = new ArrayList<>(hipHop.values());
 
-        Map<String , Integer> pop = new LinkedHashMap<>(MusicData.get("Pop"));
+        Map<String , Integer> pop = new LinkedHashMap<>(MusicData.get(genre2));
         List<String> listKeysPop = new ArrayList<>(pop.keySet());
         List<Integer> listValuesPop = new ArrayList<>(pop.values());
 
@@ -185,41 +188,6 @@ public class Music {
 
             }
         }
-        System.out.println("Top of the dance music:");
-        return result;
-    }
-
-    static public List<String> SongsForDream (Map<String , Map<String , Integer>> map) {
-
-        Map<String , Integer> relax = new LinkedHashMap<>(map.get("Relax"));
-        List<String> listKeysRelax = new ArrayList<>(relax.keySet());
-        List<Integer> listValuesRelax = new ArrayList<>(relax.values());
-
-        Map<String , Integer> classic = new LinkedHashMap<>(map.get("Classic"));
-        List<String> listKeysClassic = new ArrayList<>(classic.keySet());
-        List<Integer> listValuesClassic = new ArrayList<>(classic.values());
-
-        System.out.println(relax);
-        System.out.println(classic);
-
-        List<String> result = new ArrayList<>();
-
-        if(listValuesClassic.get(0)>=listValuesRelax.get(0)) {
-            for (int i = 0; i < 5; i++) {
-
-                result.add(listKeysClassic.get(i));
-                result.add(listKeysRelax.get(i));
-
-            }
-        } else {
-            for (int i = 0; i < 5; i++) {
-
-                result.add(listKeysRelax.get(i));
-                result.add(listKeysClassic.get(i));
-
-            }
-        }
-        System.out.println("Top of the music for sleep:");
         return result;
     }
 
