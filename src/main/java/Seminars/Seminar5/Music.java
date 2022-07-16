@@ -29,6 +29,7 @@ public class Music {
         System.out.println("Which playlist do you want listen?");
         System.out.println("Insert 1 if dance playlist is interested for you.");
         System.out.println("Insert 2 if dream playlist is interested for you. Music for sleep.");
+        System.out.println("Insert 3 if you need training music.");
         Scanner choice = new Scanner(System.in);
         switch (choice.nextInt()) {
             case (1):
@@ -40,6 +41,12 @@ public class Music {
             case (2):
                 vipPlayList = ResultPlaylist(playList, genres.get(3), genres.get(6));
                 System.out.println("Top of the music for sleep:");
+                System.out.println(vipPlayList);
+                System.out.println(ShakeShake(vipPlayList));
+                break;
+            case (3):
+                vipPlayList = ResultPlaylist(playList, genres.get(5), genres.get(4));
+                System.out.println("Top music for training:");
                 System.out.println(vipPlayList);
                 System.out.println(ShakeShake(vipPlayList));
                 break;
