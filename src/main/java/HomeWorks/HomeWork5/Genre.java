@@ -3,32 +3,49 @@ package HomeWorks.HomeWork5;
 public class Genre {
 
     private String name;
+    private Song[] listSongs = new Song[11];
 
-    private String[] listGenres = new String[]{"Pop","Hip-Hop","Rap","Classic","Rock","DupStep","Relax"};
-    public Genre() {
+    public Genre(String userInput) {
 
-        int nameRandom = (int) (Math.random()* listGenres.length);
-        this.name = this.listGenres[nameRandom];
-        removeUsed(nameRandom);
+        this.name = userInput;
+        for (int i = 0; i < listSongs.length; i++) {
+            this.listSongs[i] = new Song();
+        }
 
     }
+
 
     public void ShowGenre() {
-        System.out.println(this.name);
-    }
 
-    private void removeUsed(int randomNumber) {
-
-        String[] newListSongs = new String[this.listGenres.length-1];
-        for (int i = 0; i < newListSongs.length; i++) {
-            if (i != randomNumber) {
-                newListSongs[i] = this.listGenres[i];
-            }
+        for (int i = 0; i < listSongs.length; i++) {
+            System.out.printf("%s %s %d\n", listSongs[i].GetNameOfSong(), listSongs[i].GetNameOfSinger(), listSongs[i].GetListened());
         }
-        this.listGenres = newListSongs;
+
     }
 
-    private String[] getListGenres(){
-        return listGenres;
+
+    public void SortGenre(){
+        for (int i = 0; i < listSongs.length; i++) {
+            Song maxListened = listSongs[i];
+            Song temp;
+            int placeOfMaxListened = i;
+            for (int j = i; j < listSongs.length; j++) {
+                if (maxListened.GetListened() < listSongs[j].GetListened() ) {
+                    maxListened = listSongs[j];
+                    placeOfMaxListened = j;
+                }
+            }
+            temp = listSongs[i];
+            listSongs[i] = maxListened;
+            listSongs[placeOfMaxListened] = temp;
+
+        }
+        System.out.println("SORT IS DONE");
     }
+
+
+    public void ShowNameOfGenre() {
+        System.out.printf("%s \n",this.name);
+    }
+
 }
