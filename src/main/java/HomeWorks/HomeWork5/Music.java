@@ -8,7 +8,6 @@ public class Music {
     private List<Integer> howManyListened = new ArrayList<>();
     private String[] genres;
     private String[] singers;
-
     private String[] songs;
 
     public Music() {
@@ -20,6 +19,14 @@ public class Music {
 
             this.howManyListened.add((int) (Math.random()*1001));
         }
+    }
+
+    public Music(String[] singers, String[] songs, List<Integer> listened) {
+
+        this.singers = singers;
+        this.songs = songs;
+        this.howManyListened = listened;
+
     }
     public String[] GetGenres () {
 
@@ -41,25 +48,42 @@ public class Music {
         return howManyListened;
     }
 
-    public void RemoveUsedSongs(int index) {
+    public void RemoveUsed(int index) {
 
-        List<String> newList = new ArrayList<>(songs.length-1);
+        List<String> newListSong = new ArrayList<>(songs.length-1);
         for (int i = 0; i < songs.length; i++) {
 
             if (i != index) {
 
-                newList.add(songs[i]);
+                newListSong.add(songs[i]);
 
             }
 
         }
         this.howManyListened.remove(index);
-        this.songs = newList.toArray(new String[0]);
+        this.songs = newListSong.toArray(new String[0]);
     }
 
+    public void RemoveAllUsed(int index) {
 
+        List<String> newSingerList = new ArrayList<>(singers.length-1);
+        List<String> newSongsList = new ArrayList<>(songs.length-1);
+        List<Integer> newListened = new ArrayList<>(howManyListened.size()-1);
 
+        for (int i = 0; i < singers.length; i++) {
 
+            if (i != index) {
+
+                newSingerList.add(singers[i]);
+                newSongsList.add(songs[i]);
+                newListened.add(howManyListened.get(i));
+
+            }
+        }
+        this.singers = newSingerList.toArray(new String[0]);
+        this.songs = newSongsList.toArray(new String[0]);
+        this.howManyListened = newListened;
+    }
     public int HowManySongsHere(){
         return this.songs.length;
     }
