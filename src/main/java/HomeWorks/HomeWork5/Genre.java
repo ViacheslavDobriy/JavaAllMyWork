@@ -3,49 +3,29 @@ package HomeWorks.HomeWork5;
 public class Genre {
 
     private String name;
-    private Song[] listSongs = new Song[11];
+    private Music playList;
 
-    public Genre(String userInput) {
+    public Genre() {
+
+        this.name = "Default";
+        this.playList = new Music();
+    }
+
+    public Music getPlayList(String userInput) {
 
         this.name = userInput;
-        for (int i = 0; i < listSongs.length; i++) {
-            this.listSongs[i] = new Song();
-        }
+        System.out.printf("%s - name of genre\n",name);
+        for (int j = 0; j < 12; j++) {
 
-    }
+            int randomIndex = (int) (Math.random()* playList.GetAllSongs().length);
+            System.out.printf("%s %s %d \n",playList.GetAllSingers()[(int) (Math.random()* playList.GetAllSingers().length)],playList.GetAllSongs()[randomIndex], playList.GetListened().get(randomIndex));
+            playList.RemoveUsedSongs(randomIndex);
 
-
-    public void ShowGenre() {
-
-        for (int i = 0; i < listSongs.length; i++) {
-            System.out.printf("%s %s %d\n", listSongs[i].GetNameOfSong(), listSongs[i].GetNameOfSinger(), listSongs[i].GetListened());
-        }
-
-    }
-
-
-    public void SortGenre(){
-        for (int i = 0; i < listSongs.length; i++) {
-            Song maxListened = listSongs[i];
-            Song temp;
-            int placeOfMaxListened = i;
-            for (int j = i; j < listSongs.length; j++) {
-                if (maxListened.GetListened() < listSongs[j].GetListened() ) {
-                    maxListened = listSongs[j];
-                    placeOfMaxListened = j;
-                }
             }
-            temp = listSongs[i];
-            listSongs[i] = maxListened;
-            listSongs[placeOfMaxListened] = temp;
-
-        }
-        System.out.println("SORT IS DONE");
+        return playList;
     }
 
-
-    public void ShowNameOfGenre() {
-        System.out.printf("%s \n",this.name);
-    }
-
+//    public void ShowPlayList(){
+//
+//    }
 }
