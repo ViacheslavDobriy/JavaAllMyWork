@@ -31,6 +31,12 @@ public class Music {
 
     }
 
+    public String GetGenre() {
+
+        return this.genre;
+
+    }
+
     public String[] GetAllSongs() {
 
         return songs;
@@ -112,8 +118,6 @@ public class Music {
             howManyListened[indexMax] = tempListened;
 
         }
-
-        this.genre = this.genre + " - sorted by audition";
 
     }
 
