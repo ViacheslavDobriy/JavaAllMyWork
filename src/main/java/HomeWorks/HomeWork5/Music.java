@@ -9,6 +9,8 @@ public class Music {
     private String[] singers;
     private String[] songs;
 
+    private String genre;
+
     public Music() {
 
         this.singers = new String[]{"Kirkorov", "Lolita", "Pushkin", "Marlow", "Jonny", "Mot"};
@@ -20,8 +22,9 @@ public class Music {
         }
     }
 
-    public Music(String[] singers, String[] songs, int[] listened) {
+    public Music(String genre, String[] singers, String[] songs, int[] listened) {
 
+        this.genre = genre;
         this.singers = singers;
         this.songs = songs;
         this.howManyListened = listened;
@@ -45,6 +48,16 @@ public class Music {
         return howManyListened;
     }
 
+    public void ShowMusic () {
+
+        System.out.println(this.genre);
+        for (int i = 0; i < songs.length; i++) {
+
+            System.out.printf("%s - singer; %s - name of song; %d - numbers of auditions\n", singers[i], songs[i], howManyListened[i]);
+
+        }
+    }
+
     public void RemoveUsed(int index) {
 
         List<String> newListSong = new ArrayList<>(songs.length - 1);
@@ -64,37 +77,44 @@ public class Music {
         this.howManyListened = newListenedList.stream().mapToInt(i -> i).toArray();
         this.songs = newListSong.toArray(new String[0]);
 
-//        System.out.println(howManyListened.size());
-//        System.out.println(songs.length);
     }
 
-    public void RemoveAllUsed(int index) {
+    public void SortGenreList() {
 
-        List<String> newSingerList = new ArrayList<>(singers.length - 1);
-        List<String> newSongsList = new ArrayList<>(songs.length - 1);
-        List<Integer> newListened = new ArrayList<>(howManyListened.length - 1);
+        int tempListened;
+        String tempSingers;
+        String tempSongs;
 
-        for (int i = 0; i < singers.length; i++) {
+        for (int i = 0; i < songs.length; i++) {
 
-            if (i != index) {
+            int max = howManyListened[i];
+            int indexMax = i;
+            tempSongs = songs[i];
+            tempSingers = singers[i];
+            tempListened = howManyListened[i];
 
-                newSingerList.add(singers[i]);
-                newSongsList.add(songs[i]);
-                newListened.add(howManyListened[i]);
+            for (int j = i; j < songs.length; j++) {
 
+                if (max < howManyListened[j]) {
+
+                    indexMax = j;
+                    max = howManyListened[j];
+
+                }
             }
+
+            songs[i] = songs[indexMax];
+            singers[i] = singers[indexMax];
+            howManyListened[i] = howManyListened[indexMax];
+
+            songs[indexMax] = tempSongs;
+            singers[indexMax] = tempSingers;
+            howManyListened[indexMax] = tempListened;
+
         }
-        this.singers = newSingerList.toArray(new String[0]);
-        this.songs = newSongsList.toArray(new String[0]);
-        this.howManyListened = newListened.stream().mapToInt(i -> i).toArray();
-    }
 
-    public int HowManySongsHere() {
-        return this.songs.length;
-    }
+        this.genre = this.genre + " - sorted by audition";
 
-    public int HowManyListenedHere() {
-        return this.howManyListened.length;
     }
 
 }
