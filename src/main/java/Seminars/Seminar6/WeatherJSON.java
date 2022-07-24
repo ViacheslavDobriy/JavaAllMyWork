@@ -25,8 +25,8 @@ public class WeatherJSON {
         try {
 
             JsonNode jsonNode = mapper
-                    .readTree(GetString("src/main/resources/wetherJSON.txt")) // сюда путь воткнуть
-                    .at("/DailyForecasts"); // не менять
+                    .readTree(GetString("src/main/resources/wetherJSON.txt")) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                    .at("/DailyForecasts"); // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
             Map<String, Map<String, String>> weather = new HashMap<>();
 
@@ -35,29 +35,29 @@ public class WeatherJSON {
                     Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(arrayItem.get("Date").asText());
                     String result = (new SimpleDateFormat("dd.MM.yyyy")).format(date);
                     System.out.println(result);
-                        // выше после for для вытаскивания и преобразовывания даты
+                        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ for пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
                     String minimum = convertCelsiumToFahrenheit(arrayItem.get("Temperature")
                             .get("Minimum")
                             .get("Value")
                             .asText());
                     System.out.println(minimum);
-                    // вытащили минимальную температуру
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
                     String maximum = convertCelsiumToFahrenheit(arrayItem.get("Temperature")
                             .get("Maximum")
                             .get("Value")
                             .asText());
                     System.out.println(maximum);
-                    // вытащили максимальную температуру
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-                    weather.put(result, new HashMap<String , String >());  // занесли в мапу result
-                    weather.get(result).put("Minimum", minimum);  // занесли в мапу минимум
-                    weather.get(result).put("Maximum", maximum);  // занесли в мапу максимум
+                    weather.put(result, new HashMap<String , String >());  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ result
+                    weather.get(result).put("Minimum", minimum);  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                    weather.get(result).put("Maximum", maximum);  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 }
-                for(Map.Entry<String , Map<String , String >> item : weather.entrySet()){  // показываем мапу
+                for(Map.Entry<String , Map<String , String >> item : weather.entrySet()){  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 
-                        System.out.printf("%s - Дата, %s - максимальная температура, %s - минимальная температура\n",item.getKey(), item.getValue().get("Maximum"), item.getValue().get("Minimum"));
+                        System.out.printf("%s - пїЅпїЅпїЅпїЅ, %s - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, %s - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n",item.getKey(), item.getValue().get("Maximum"), item.getValue().get("Minimum"));
                 }
             }
         } catch (JsonProcessingException e) {
@@ -67,11 +67,11 @@ public class WeatherJSON {
             throw new RuntimeException(e);
         }
         str = GetString("src/main/resources/wetherJSON.txt");
-//        System.out.println(str); // покажет весь JSON файл
+//        System.out.println(str); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ JSON пїЅпїЅпїЅпїЅ
     }
 
     /**
-     * GetString считывает файл и вовзращает String со всем JSON файлом
+     * GetString пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ String пїЅпїЅ пїЅпїЅпїЅпїЅ JSON пїЅпїЅпїЅпїЅпїЅпїЅ
      * @param str
      * @return
      */
@@ -94,7 +94,7 @@ public class WeatherJSON {
     }
 
     /**
-     * Конвертируем ФАРЕНГЕЙТЫ в ЦЕЛЬСИИ
+     * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
      * @param faren
      * @return
      */
