@@ -1,5 +1,8 @@
 package HomeWorks.HomeWork4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Competition {
 
     public static void main(String[] args) {
@@ -26,39 +29,31 @@ public class Competition {
         Team team1 = new Team("Cool Team", new People[]{sportsmen1, sportsmen2, sportsmen3}) {};
         Team team2 = new Team("Brave guys", new People[]{sportsmen4, sportsmen5, sportsmen6}) {};
 
-        team1.InfoTeam();
-        team2.InfoTeam();
-
         ObstacleCourse running = new Running();
 
         ObstacleCourse swimming = new Swimming();
 
         ObstacleCourse jumping = new Jumping();
 
+        List<ObstacleCourse> courses = new ArrayList<>(3);
+
+        courses.add(running);
+        courses.add(swimming);
+        courses.add(jumping);
+
         System.out.printf("%s need %d power\n", running.GetObstacle(), running.GetPowerRequirements());
         System.out.printf("%s need %d power\n", swimming.GetObstacle(), swimming.GetPowerRequirements());
         System.out.printf("%s need %d power\n", jumping.GetObstacle(), jumping.GetPowerRequirements());
 
-        running.GoObstacle(team1);
-        running.GoObstacle(team2);
-        System.out.println("Running obstacle is done");
-        swimming.GoObstacle(team1);
-        swimming.GoObstacle(team2);
-        System.out.println("Swimming obstacle is done");
-        jumping.GoObstacle(team1);
-        jumping.GoObstacle(team2);
-        System.out.println("Jumping obstacle is done");
-
-        team1.InfoTeam();
-        team2.InfoTeam();
-
-        if(team1.HowManyPoints() > team2.HowManyPoints()) {
-            System.out.printf("Team %s is winner!!", team1.GetTeamName());
-        } else if (team2.HowManyPoints() > team1.HowManyPoints()) {
-            System.out.printf("Team %s is winner!", team2.GetTeamName());
-        } else {
-            System.out.println("Friendship won!");
-        }
+        LineOfCourses line = new LineOfCourses(running, swimming, jumping);
+        line.Competition(team1, team2, courses);
+//        if(team1.HowManyPoints() > team2.HowManyPoints()) {
+//            System.out.printf("Team %s is winner!!", team1.GetTeamName());
+//        } else if (team2.HowManyPoints() > team1.HowManyPoints()) {
+//            System.out.printf("Team %s is winner!", team2.GetTeamName());
+//        } else {
+//            System.out.println("Friendship won!");
+//        }
 
     }
 

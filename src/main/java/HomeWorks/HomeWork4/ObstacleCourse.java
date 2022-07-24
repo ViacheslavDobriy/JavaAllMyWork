@@ -3,7 +3,6 @@ package HomeWorks.HomeWork4;
 public abstract class ObstacleCourse {
 
     private String nameOfObstacle;
-
     private int powerRequirements;
     public String SetObstacle() {
         return nameOfObstacle;
