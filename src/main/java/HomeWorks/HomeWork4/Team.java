@@ -3,7 +3,7 @@ package HomeWorks.HomeWork4;
 public abstract class Team {
 
     private String teamName;
-    private People[] team = new People[3];
+    private People[] team;
 
     public Team(String teamName, People[] team) {
 
@@ -25,6 +25,10 @@ public abstract class Team {
         }
     }
 
+    public People[] getTeam() {
+        return team;
+    }
+
     public void AfterObstacle(int PowerRequirements) {
 
         for (int i = 0; i < team.length; i++) {
@@ -32,21 +36,6 @@ public abstract class Team {
             team[i].DecreasePower(PowerRequirements);
 
         }
-    }
-
-    public int HowManyPoints() {
-
-        int pointsTeam = 0;
-
-        for (int i = 0; i < team.length; i++) {
-
-            if (team[i].GetPower() >= 0) {
-
-                pointsTeam = pointsTeam + 1;
-            }
-
-        }
-        return pointsTeam;
     }
 
 }

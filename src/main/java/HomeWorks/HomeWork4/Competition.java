@@ -1,8 +1,5 @@
 package HomeWorks.HomeWork4;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Competition {
 
     public static void main(String[] args) {
@@ -35,11 +32,6 @@ public class Competition {
 
         ObstacleCourse jumping = new Jumping();
 
-        List<ObstacleCourse> courses = new ArrayList<>(3);
-
-        courses.add(running);
-        courses.add(swimming);
-        courses.add(jumping);
 
         System.out.printf("%s need %d power\n", running.GetObstacle(), running.GetPowerRequirements());
         System.out.printf("%s need %d power\n", swimming.GetObstacle(), swimming.GetPowerRequirements());
@@ -47,13 +39,7 @@ public class Competition {
 
         LineOfCourses line = new LineOfCourses(running, swimming, jumping);
         line.Competition(team1, team2);
-//        if(team1.HowManyPoints() > team2.HowManyPoints()) {
-//            System.out.printf("Team %s is winner!!", team1.GetTeamName());
-//        } else if (team2.HowManyPoints() > team1.HowManyPoints()) {
-//            System.out.printf("Team %s is winner!", team2.GetTeamName());
-//        } else {
-//            System.out.println("Friendship won!");
-//        }
+        line.WhoIsWinner(team1, team2);
 
     }
 
