@@ -5,23 +5,22 @@ import java.util.List;
 
 public class LineOfCourses {
 
+    List<ObstacleCourse> courses = new ArrayList<>(3);
     public LineOfCourses(ObstacleCourse running, ObstacleCourse swimming, ObstacleCourse jumping) {
 
-        List<ObstacleCourse> courses = new ArrayList<>();
-        courses.add(running);
-        courses.add(swimming);
-        courses.add(jumping);
+        this.courses.add(running);
+        this.courses.add(swimming);
+        this.courses.add(jumping);
         System.out.println("Obstacle of courses is ready for competition");
-//        Competition(team1, team2, courses);
 
     }
 
-    public void Competition(Team team1, Team team2, List<ObstacleCourse> allCourses) {
+    public void Competition(Team team1, Team team2) {
 
-        for (int i = 0; i < allCourses.size(); i++) {
+        for (int i = 0; i < courses.size(); i++) {
 
-            allCourses.get(i).GoObstacle(team1);
-            allCourses.get(i).GoObstacle(team2);
+            courses.get(i).GoObstacle(team1);
+            courses.get(i).GoObstacle(team2);
             team1.InfoTeam();
             team2.InfoTeam();
 

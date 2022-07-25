@@ -46,7 +46,7 @@ public class Competition {
         System.out.printf("%s need %d power\n", jumping.GetObstacle(), jumping.GetPowerRequirements());
 
         LineOfCourses line = new LineOfCourses(running, swimming, jumping);
-        line.Competition(team1, team2, courses);
+        line.Competition(team1, team2);
 //        if(team1.HowManyPoints() > team2.HowManyPoints()) {
 //            System.out.printf("Team %s is winner!!", team1.GetTeamName());
 //        } else if (team2.HowManyPoints() > team1.HowManyPoints()) {
