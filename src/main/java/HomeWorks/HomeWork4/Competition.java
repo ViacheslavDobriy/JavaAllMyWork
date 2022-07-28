@@ -6,23 +6,36 @@ public class Competition {
 
     public static void main(String[] args) {
 
-        System.out.println("Creating people for filling teams, how many people there will compete?");
-        Scanner line = new Scanner(System.in);
-        People[] allPeople = new People[(line.nextInt())];
+        RegistrationTeamForm formForTeams = new RegistrationTeamForm();
+        People[] forTeam1 = new People[formForTeams.howManyMembers()];
+        for (int i = 0; i < forTeam1.length; i++) {
 
-        for (int i = 0; i < allPeople.length; i++) {
-
-            allPeople[i] = new People();
+            forTeam1[i] = new People();
 
         }
 
-        for (int i = 0; i < allPeople.length; i++) {
+        People[] forTeam2 = new People[formForTeams.howManyMembers()];
+        for (int i = 0; i < forTeam2.length; i++) {
 
-            allPeople[i].ShowInfo();
+            forTeam2[i] = new People();
 
         }
-//        Team team1 = new Team("Cool Team", new People[]{sportsmen1, sportsmen2, sportsmen3}) {};
-//        Team team2 = new Team("Brave guys", new People[]{sportsmen4, sportsmen5, sportsmen6}) {};
+
+
+        for (People people : forTeam1) {
+
+            people.ShowInfo();
+
+        }
+        for (People people : forTeam2) {
+
+            people.ShowInfo();
+
+        }
+        Team TEAM1 = new Team(formForTeams.NameOfTeam(), forTeam1);
+        Team TEAM2 = new Team(formForTeams.NameOfTeam(), forTeam2);
+        TEAM1.InfoTeam();
+        TEAM2.InfoTeam();
 //
 //        ObstacleCourse running = new Running();
 //

@@ -1,6 +1,6 @@
 package HomeWorks.HomeWork4;
 
-public abstract class Team {
+public class Team {
 
     private String teamName;
     private People[] team;
