@@ -3,7 +3,7 @@
  * Написать метод, который будет реализовывать динамический массив
  */
 
-package HomeWorks;
+package HomeWorks.First;
 
 public class Task1Update {
 

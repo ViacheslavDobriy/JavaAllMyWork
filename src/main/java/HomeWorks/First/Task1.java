@@ -2,7 +2,7 @@
  * Write a program for calculating the n-th triangular number
  */
 
-package HomeWorks;
+package HomeWorks.First;
 
 import java.util.Scanner;
 
