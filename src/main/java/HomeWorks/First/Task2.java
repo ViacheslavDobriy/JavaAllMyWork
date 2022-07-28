@@ -3,7 +3,7 @@
  * divided without remainder by the sum of the digits of this number.
  */
 
-package HomeWorks;
+package HomeWorks.First;
 
 import java.util.Random;
 
