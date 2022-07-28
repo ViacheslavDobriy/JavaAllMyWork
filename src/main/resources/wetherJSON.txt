@@ -1,0 +1,186 @@
+{
+    "Headline": {
+        "EffectiveDate": "2022-07-18T14:00:00-04:00",
+        "EffectiveEpochDate": 1658167200,
+        "Severity": 5,
+        "Text": "A thunderstorm this afternoon",
+        "Category": "thunderstorm",
+        "EndDate": "2022-07-18T20:00:00-04:00",
+        "EndEpochDate": 1658188800,
+        "MobileLink": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?lang=en-us",
+        "Link": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?lang=en-us"
+    },
+    "DailyForecasts": [
+        {
+            "Date": "2022-07-18T07:00:00-04:00",
+            "EpochDate": 1658142000,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 81.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 90.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 17,
+                "IconPhrase": "Partly sunny w/ t-storms",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 39,
+                "IconPhrase": "Partly cloudy w/ showers",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=1&lang=en-us",
+            "Link": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=1&lang=en-us"
+        },
+        {
+            "Date": "2022-07-19T07:00:00-04:00",
+            "EpochDate": 1658228400,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 81.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 90.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 17,
+                "IconPhrase": "Partly sunny w/ t-storms",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Night": {
+                "Icon": 39,
+                "IconPhrase": "Partly cloudy w/ showers",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=2&lang=en-us",
+            "Link": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=2&lang=en-us"
+        },
+        {
+            "Date": "2022-07-20T07:00:00-04:00",
+            "EpochDate": 1658314800,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 80.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 91.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 3,
+                "IconPhrase": "Partly sunny",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 34,
+                "IconPhrase": "Mostly clear",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=3&lang=en-us",
+            "Link": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=3&lang=en-us"
+        },
+        {
+            "Date": "2022-07-21T07:00:00-04:00",
+            "EpochDate": 1658401200,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 81.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 92.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 2,
+                "IconPhrase": "Mostly sunny",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 34,
+                "IconPhrase": "Mostly clear",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=4&lang=en-us",
+            "Link": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=4&lang=en-us"
+        },
+        {
+            "Date": "2022-07-22T07:00:00-04:00",
+            "EpochDate": 1658487600,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 80.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 92.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 2,
+                "IconPhrase": "Mostly sunny",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=5&lang=en-us",
+            "Link": "http://www.accuweather.com/en/us/st-petersburg-fl/33711/daily-weather-forecast/332287?day=5&lang=en-us"
+        }
+    ]
+}
