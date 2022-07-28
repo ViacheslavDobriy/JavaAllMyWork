@@ -1,8 +1,9 @@
 package HomeWorks.HomeWork4;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public abstract class People {
+public class People {
 
     private String name;
     private int age;
@@ -14,7 +15,13 @@ public abstract class People {
         this.power = power;
     }
     public People() {
-        this("Slava", 26, 100);
+
+        System.out.println("Insert name of sportsmen: ");
+        Scanner line = new Scanner(System.in);
+        this.name = line.nextLine();
+        SetAge();
+        SetPower();
+
     }
 
     public People(String name) {
@@ -30,7 +37,7 @@ public abstract class People {
 
     public void SetAge () {
         Random age1 = new Random();
-        age = age1.nextInt(18, 75);
+        this.age = age1.nextInt(18, 50);
     }
 
     public int GetAge () {
@@ -38,8 +45,20 @@ public abstract class People {
     }
 
     public void SetPower () {
-        Random power1 = new Random();
-        power = power1.nextInt(10, 100);
+
+        if(this.age<=25) {
+
+            this.power = 100;
+
+        } else if (this.age<=40) {
+
+            this.power = 90;
+
+        } else {
+
+            this.power = 75;
+
+        }
     }
 
     public int GetPower () {
@@ -50,4 +69,9 @@ public abstract class People {
         this.power = this.power - powerRequirements;
     }
 
+    public void ShowInfo() {
+
+        System.out.printf("%s %d %d\n", this.name, this.age, this.power);
+
+    }
 }
