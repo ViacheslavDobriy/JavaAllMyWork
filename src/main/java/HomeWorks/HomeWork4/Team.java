@@ -5,11 +5,20 @@ public class Team {
     private String teamName;
     private People[] team;
 
-    public Team(String teamName, People[] team) {
+    private People captain;
 
-        this.teamName = teamName;
-        this.team = team;
+    public Team() {
 
+        RegistrationTeamForm newTeam = new RegistrationTeamForm();
+        this.teamName = newTeam.NameOfTeam();
+
+        People[] peopleForTeam = new People[newTeam.howManyMembers()];
+        for (int i = 0; i < peopleForTeam.length; i++) {
+
+            peopleForTeam[i] = new People("sportsmen");
+
+        }
+        this.team = peopleForTeam;
     }
 
     public String GetTeamName() {

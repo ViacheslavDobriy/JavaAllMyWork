@@ -1,5 +1,6 @@
 package HomeWorks.HomeWork4;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,26 +10,19 @@ public class People {
     private int age;
     private int power;
 
-    public People(String name, int age, int power) {
-        this.name = name;
-        this.age = age;
-        this.power = power;
-    }
-    public People() {
+    private int leadership;
 
-        System.out.println("Insert name of sportsmen: ");
+    public People(String member) {
+
+        System.out.println("Insert name of " + member + ":");
         Scanner line = new Scanner(System.in);
         this.name = line.nextLine();
         SetAge();
         SetPower();
+        if (Objects.equals(member, "Captain")) {
+            this.leadership = line.nextInt();
+        }
 
-    }
-
-    public People(String name) {
-
-        this.name = name;
-        this.age = GetAge();
-        this.power = GetPower();
     }
     public String GetName () {
 
