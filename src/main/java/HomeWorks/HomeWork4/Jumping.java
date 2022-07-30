@@ -12,7 +12,5 @@ public class Jumping extends ObstacleCourse{
     }
 
     @Override
-    public void GoObstacle(Team team) {
-        team.AfterObstacle(GetPowerRequirements());
-    }
+    public void GoObstacle(Team team) {team.AfterObstacle(GetPowerRequirements());}
 }

@@ -23,19 +23,10 @@ public class RegistrationTeamForm {
 
     }
 
-    public String NameOfCaptain() {
+    public People Captain() {
 
-        System.out.println("What is Captain's name?");
-        Scanner nameCaptain = new Scanner(System.in);
-        return nameCaptain.nextLine();
-
-    }
-
-    public int HowOldCaptain() {
-
-        System.out.println("How old is Captain?");
-        Scanner ageCaptain = new Scanner(System.in);
-        return ageCaptain.nextInt();
+        People captain = new People();
+        return captain;
 
     }
 

@@ -21,10 +21,10 @@ public class LineOfCourses {
 
             courses.get(i).GoObstacle(team1);
             courses.get(i).GoObstacle(team2);
-            team1.InfoTeam();
-            team2.InfoTeam();
 
         }
+        team1.InfoTeam();
+        team2.InfoTeam();
 
     }
 
