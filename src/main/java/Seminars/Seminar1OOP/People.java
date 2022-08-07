@@ -6,18 +6,23 @@ package Seminars.Seminar1OOP;
 public class People {
 
     private String name;
+    private String surname;
 
     private int age;
 
-    public People(String fullName, int howOld) {
+    private String gender;
 
-        this.name = fullName;
+    public People(String name, String surname, int howOld, String gender) {
+
+        this.name = name;
+        this.surname = surname;
         this.age = howOld;
+        this.gender = gender;
 
     }
 
     public People() {
-        this("Stas", 6);
+        this("Stas","Molotov", 6, "Man");
     }
 
     public int GetAge(){

@@ -9,12 +9,22 @@ public class Relation extends AllRelations{
 
     private People person2;
 
-    private String relation;
+    private Categories category;
 
-    public Relation(People man1, People man2, String connection) {
+    public Relation(People man1, People man2, String connection){
         this.person1 = man1;
         this.person2 = man2;
-        this.relation = connection;
+        switch (connection) {
+            case "Parent":
+                this.category = Categories.PARENT;
+                break;
+            case "Child":
+                this.category = Categories.CHILD;
+                break;
+            case "Brother":
+                this.category = Categories.BROTHER;
+                break;
+        }
 
     }
 
@@ -27,12 +37,7 @@ public class Relation extends AllRelations{
     }
 
     public String GetRel(){
-        return this.relation;
+        return this.category.getTitle();
     }
-//    public String WhoIsIT(People man1, People man2) {
-//
-//        if(man1.)
-//
-//    }
 
 }

@@ -17,15 +17,17 @@ public class FamilyTree {
 
     public static void main(String[] args) {
 
-        People man1 = new People("John", 30);
+        People man1 = new People("John","Lee", 30, "Man");
         People man2 = new People();
-        People man3 = new People("Oleg", 25);
-        People man4 = new People("Slava", 7);
-        Relation rel1 = new Relation(man1, man2, "child");
-        Relation rel2 = new Relation(man4, man3, "parent");
+        People man3 = new People("Oleg","Lee", 25, "Man");
+        People man4 = new People("Slava","Lee", 7, "Man");
+        Relation rel1 = new Relation(man1, man2, "Child");
+        Relation rel2 = new Relation(man4, man3, "Parent");
+        Relation rel3 = new Relation(man1, man3, "Brother");
         AllRelations rel = new AllRelations();
-        rel.AddParentRelation(rel1);
-        rel.AddParentRelation(rel2);
+        rel.AddRelation(rel1);
+        rel.AddRelation(rel2);
+        rel.AddRelation(rel3);
         rel.ShowTree();
 
     }
