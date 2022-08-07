@@ -40,4 +40,9 @@ public class Relation extends AllRelations{
         return this.category.getTitle();
     }
 
+    public void showLink() {
+
+        System.out.printf("%s is %s of %s\n", person2.GetFullName(), category.getTitle(), person1.GetFullName());
+
+    }
 }

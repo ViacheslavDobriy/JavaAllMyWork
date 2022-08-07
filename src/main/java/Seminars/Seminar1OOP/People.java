@@ -29,9 +29,9 @@ public class People {
         return this.age;
     }
 
-    public String GetName() {
+    public String GetFullName() {
 
-        return this.name;
+        return this.name + " " + this.surname;
 
     }
 }

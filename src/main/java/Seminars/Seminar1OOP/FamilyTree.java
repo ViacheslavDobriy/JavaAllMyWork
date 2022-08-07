@@ -17,18 +17,24 @@ public class FamilyTree {
 
     public static void main(String[] args) {
 
-        People man1 = new People("John","Lee", 30, "Man");
+        People man1 = new People("John","Lee", 30, "Boy");
         People man2 = new People();
-        People man3 = new People("Oleg","Lee", 25, "Man");
-        People man4 = new People("Slava","Lee", 7, "Man");
+        People man3 = new People("Oleg","Lee", 25, "Boy");
+        People man4 = new People("Slava","Lee", 7, "Boy");
+        People man5 = new People("Liza", "Lee", 3, "Girl");
         Relation rel1 = new Relation(man1, man2, "Child");
         Relation rel2 = new Relation(man4, man3, "Parent");
         Relation rel3 = new Relation(man1, man3, "Brother");
+        Relation rel4 = new Relation(man3, man5, "Child");
         AllRelations rel = new AllRelations();
         rel.AddRelation(rel1);
         rel.AddRelation(rel2);
         rel.AddRelation(rel3);
-        rel.ShowTree();
+        rel.AddRelation(rel4);
+//        rel.ShowTree();   // show all links
+        Research.showAllRelations("Oleg Lee", rel); // all links with Oleg Lee
+        System.out.println("----------------------------");
+        Research.showChildren("Oleg Lee", rel);  // children of Oleg Lee
 
     }
 }

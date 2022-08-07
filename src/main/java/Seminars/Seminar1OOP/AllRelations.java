@@ -51,9 +51,13 @@ public class AllRelations {
 
         for (int i = 0; i < relations.size(); i++) {
 
-            System.out.printf("%s is %s of %s\n", relations.get(i).Get2().GetName(), relations.get(i).GetRel(), relations.get(i).Get1().GetName());
+            System.out.printf("%s is %s of %s\n", relations.get(i).Get2().GetFullName(), relations.get(i).GetRel(), relations.get(i).Get1().GetFullName());
 
         }
 
+    }
+
+    public List<Relation> getRelations() {
+        return relations;
     }
 }
