@@ -27,11 +27,12 @@ public class FamilyTree {
         Relation rel3 = new Relation(man1, man3, "Brother");
         Relation rel4 = new Relation(man3, man5, "Child");
         AllRelations rel = new AllRelations();
-        rel.AddRelation(rel1);
-        rel.AddRelation(rel2);
-        rel.AddRelation(rel3);
-        rel.AddRelation(rel4);
-//        rel.ShowTree();   // show all links
+        rel.addRelation(rel1);
+        rel.addRelation(rel2);
+        rel.addRelation(rel3);
+        rel.addRelation(rel4);
+        rel.showTree();   // show all links
+        System.out.println("----------------------------");
         Research.showAllRelations("Oleg Lee", rel); // all links with Oleg Lee
         System.out.println("----------------------------");
         Research.showChildren("Oleg Lee", rel);  // children of Oleg Lee

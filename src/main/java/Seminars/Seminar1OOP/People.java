@@ -25,11 +25,12 @@ public class People {
         this("Stas","Molotov", 6, "Man");
     }
 
-    public int GetAge(){
+    public int getAge(){
         return this.age;
     }
 
-    public String GetFullName() {
+    @Override
+    public String toString() {
 
         return this.name + " " + this.surname;
 

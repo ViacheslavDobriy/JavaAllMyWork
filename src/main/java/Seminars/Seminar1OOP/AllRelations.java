@@ -9,49 +9,50 @@ import java.util.Objects;
  */
 public class AllRelations {
 
-    List<Relation> relations = new ArrayList<>();
+    private List<Relation> relations = new ArrayList<>();
 
 
-    public void AddRelation(Relation rel1) {
+    public void addRelation(Relation rel1) {
 
-        switch (rel1.GetRel()) {
+        switch (rel1.getRel()) {
             case "Child":
             case "Parent":
-                ParentChild(rel1);
+                parentChild(rel1);
                 break;
             case "Brother":
-                BrotherRelations(rel1);
+                brotherRelations(rel1);
+                break;
         }
     }
 
-    private void ParentChild(Relation rel) {
+    private void parentChild(Relation rel) {
 
         relations.add(rel);
-        if (Objects.equals(rel.GetRel(),Categories.CHILD.getTitle())) {
+        if (Objects.equals(rel.getRel(),Categories.CHILD.getTitle())) {
 
-            Relation rel2 = new Relation(rel.Get2(), rel.Get1(), "Parent");
+            Relation rel2 = new Relation(rel.get2(), rel.get1(), "Parent");
             this.relations.add(rel2);
 
         } else {
 
-            Relation rel2 = new Relation(rel.Get2(), rel.Get1(), "Child");
+            Relation rel2 = new Relation(rel.get2(), rel.get1(), "Child");
             this.relations.add(rel2);
 
         }
 
     }
 
-    private void BrotherRelations(Relation rel) {
+    private void brotherRelations(Relation rel) {
 
         relations.add(rel);
-        Relation rel2 = new Relation(rel.Get2(), rel.Get1(), "Brother");
+        Relation rel2 = new Relation(rel.get2(), rel.get1(), "Brother");
         relations.add(rel2);
     }
-    public void ShowTree(){
+    public void showTree(){
 
-        for (int i = 0; i < relations.size(); i++) {
+        for (Relation rel: relations) {
 
-            System.out.printf("%s is %s of %s\n", relations.get(i).Get2().GetFullName(), relations.get(i).GetRel(), relations.get(i).Get1().GetFullName());
+            System.out.printf("%s is %s of %s\n", rel.get2().toString(), rel.getRel(), rel.get1().toString());
 
         }
 

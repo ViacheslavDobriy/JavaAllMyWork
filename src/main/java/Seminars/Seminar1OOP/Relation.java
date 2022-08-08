@@ -28,21 +28,21 @@ public class Relation extends AllRelations{
 
     }
 
-    public People Get1(){
+    public People get1(){
         return this.person1;
     }
 
-    public People Get2(){
+    public People get2(){
         return this.person2;
     }
 
-    public String GetRel(){
+    public String getRel(){
         return this.category.getTitle();
     }
 
     public void showLink() {
 
-        System.out.printf("%s is %s of %s\n", person2.GetFullName(), category.getTitle(), person1.GetFullName());
+        System.out.printf("%s is %s of %s\n", person2.toString(), category.getTitle(), person1.toString());
 
     }
 }

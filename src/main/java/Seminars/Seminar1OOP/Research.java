@@ -11,7 +11,7 @@ public class Research {
 
         for (Relation rel: relations) {
 
-            if(Objects.equals(rel.Get2().GetFullName(), fullName)) {
+            if(Objects.equals(rel.get2().toString(), fullName)) {
 
                 rel.showLink();
 
@@ -25,10 +25,10 @@ public class Research {
         System.out.printf("Children of %s\n", fullName);
         for (Relation rel: relations) {
 
-            if(Objects.equals(rel.Get1().GetFullName(), fullName) &&
-            Objects.equals(rel.GetRel(),"Child")) {
+            if(Objects.equals(rel.get1().toString(), fullName) &&
+            Objects.equals(rel.getRel(),"Child")) {
 
-                System.out.println(rel.Get2().GetFullName());
+                System.out.println(rel.get2().toString());
 
             }
         }
