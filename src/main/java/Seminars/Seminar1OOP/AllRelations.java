@@ -15,13 +15,9 @@ public class AllRelations {
     public void addRelation(Relation rel1) {
 
         switch (rel1.getRel()) {
-            case "Child":
-            case "Parent":
-                parentChild(rel1);
-                break;
-            case "Brother":
-                brotherRelations(rel1);
-                break;
+            case "Child", "Parent" -> parentChild(rel1);
+            case "Brother" -> brotherRelations(rel1);
+            case "Spouse" -> spouseRelations(rel1);
         }
     }
 
@@ -46,6 +42,12 @@ public class AllRelations {
 
         relations.add(rel);
         Relation rel2 = new Relation(rel.get2(), rel.get1(), "Brother");
+        relations.add(rel2);
+    }
+    private void spouseRelations(Relation rel) {
+
+        relations.add(rel);
+        Relation rel2 = new Relation(rel.get2(), rel.get1(), "Spouse");
         relations.add(rel2);
     }
     public void showTree(){

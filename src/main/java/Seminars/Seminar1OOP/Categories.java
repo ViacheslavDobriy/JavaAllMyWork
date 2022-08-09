@@ -3,7 +3,8 @@ package Seminars.Seminar1OOP;
 public enum Categories {
     PARENT("Parent"),
     CHILD("Child"),
-    BROTHER("Brother");
+    BROTHER("Brother"),
+    SPOUSE("Spouse");
 
     private String title;
 

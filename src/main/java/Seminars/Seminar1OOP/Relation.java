@@ -15,15 +15,10 @@ public class Relation extends AllRelations{
         this.person1 = man1;
         this.person2 = man2;
         switch (connection) {
-            case "Parent":
-                this.category = Categories.PARENT;
-                break;
-            case "Child":
-                this.category = Categories.CHILD;
-                break;
-            case "Brother":
-                this.category = Categories.BROTHER;
-                break;
+            case "Parent" -> this.category = Categories.PARENT;
+            case "Child" -> this.category = Categories.CHILD;
+            case "Brother" -> this.category = Categories.BROTHER;
+            case "Spouse" -> this.category = Categories.SPOUSE;
         }
 
     }

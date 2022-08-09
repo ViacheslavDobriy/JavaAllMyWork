@@ -17,20 +17,23 @@ public class FamilyTree {
 
     public static void main(String[] args) {
 
-        People man1 = new People("John","Lee", 30, "Boy");
-        People man2 = new People();
-        People man3 = new People("Oleg","Lee", 25, "Boy");
-        People man4 = new People("Slava","Lee", 7, "Boy");
-        People man5 = new People("Liza", "Lee", 3, "Girl");
+        People man1 = new Man("John","Lee", 30);
+        People man2 = new Man("Vanya", "Lee", 5);
+        People man3 = new Man("Oleg","Lee", 25);
+        People man4 = new Man("Slava","Lee", 7);
+        People man5 = new Woman("Liza", "Lee", 3);
+        People man6 = new Woman("ALina", "Lee", 29);
         Relation rel1 = new Relation(man1, man2, "Child");
         Relation rel2 = new Relation(man4, man3, "Parent");
         Relation rel3 = new Relation(man1, man3, "Brother");
         Relation rel4 = new Relation(man3, man5, "Child");
+        Relation rel5 = new Relation(man3, man6, "Spouse");
         AllRelations rel = new AllRelations();
         rel.addRelation(rel1);
         rel.addRelation(rel2);
         rel.addRelation(rel3);
         rel.addRelation(rel4);
+        rel.addRelation(rel5);
         rel.showTree();   // show all links
         System.out.println("----------------------------");
         Research.showAllRelations("Oleg Lee", rel); // all links with Oleg Lee
