@@ -15,9 +15,10 @@ public class AllRelations {
     public void addRelation(Relation rel1) {
 
         switch (rel1.getRel()) {
-            case "Child", "Parent" -> parentChild(rel1);
+            case "Child", "Adopted", "Mother", "Father" -> parentChild(rel1);
             case "Brother" -> brotherRelations(rel1);
             case "Spouse" -> spouseRelations(rel1);
+            case "Unknown" -> System.out.printf("Link %s and %s is not created\n", rel1.get1().toString(), rel1.get2().toString());
         }
     }
 
@@ -29,8 +30,10 @@ public class AllRelations {
             Relation rel2 = new Relation(rel.get2(), rel.get1(), "Parent");
             this.relations.add(rel2);
 
+        } else if (Objects.equals(rel.getRel(), Categories.ADOPTED.getTitle())){
+            Relation rel2 = new Relation(rel.get2(), rel.get1(), "Parent");
+            this.relations.add(rel2);
         } else {
-
             Relation rel2 = new Relation(rel.get2(), rel.get1(), "Child");
             this.relations.add(rel2);
 

@@ -1,10 +1,13 @@
 package Seminars.Seminar1OOP;
 
 public enum Categories {
-    PARENT("Parent"),
     CHILD("Child"),
     BROTHER("Brother"),
-    SPOUSE("Spouse");
+    SPOUSE("Spouse"),
+    UNKNOWN("Unknown"),
+    MOTHER("Mother"),
+    FATHER("Father"),
+    ADOPTED("Adopted");
 
     private String title;
 
