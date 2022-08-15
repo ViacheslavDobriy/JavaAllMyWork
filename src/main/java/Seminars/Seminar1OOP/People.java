@@ -3,7 +3,7 @@ package Seminars.Seminar1OOP;
 /**
  * Описываем класс человек
  */
-public abstract class People {
+public abstract class People implements Comparable<People>{
 
     private String name;
     private String surname;
@@ -27,5 +27,10 @@ public abstract class People {
 
         return this.name + " " + this.surname;
 
+    }
+
+    @Override
+    public int compareTo(People o) {
+        return this.age - o.age;
     }
 }

@@ -1,5 +1,9 @@
 package Seminars.Seminar1OOP;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Идея: описать некоторое количество компонент, например:
  * - модель человека
@@ -23,6 +27,20 @@ public class FamilyTree {
         People man4 = new Man("Slava","Lee", 7);
         People man5 = new Woman("Liza", "Lee", 3);
         People man6 = new Woman("ALina", "Lee", 29);
+
+        List<People> allPeople = new ArrayList<>();
+        allPeople.add(man1);
+        allPeople.add(man2);
+        allPeople.add(man3);
+        allPeople.add(man4);
+        allPeople.add(man5);
+        allPeople.add(man6);
+
+        System.out.println(allPeople);
+//        allPeople.sort((person1, person2) -> Integer.compare(person1.getAge(), person2.getAge())); // лямбда выражение
+//        Collections.sort(allPeople); // use implements Comparable. Descending order
+        allPeople.sort(new AgeComparator()); // use Class AgeComparator with implementation Comparator<People>. Ascending order
+        System.out.println(allPeople);
         Relation rel1 = new Relation(man1, man2, "Adopted");
         Relation rel2 = new Relation(man4, man3, "Parent");
         Relation rel3 = new Relation(man1, man3, "Brother");
