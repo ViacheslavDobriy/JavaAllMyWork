@@ -3,30 +3,29 @@ package Seminars.Seminar1OOP;
 /**
  * Описываем класс человек
  */
-public class People {
+public abstract class People {
 
     private String name;
+    private String surname;
 
     private int age;
 
-    public People(String fullName, int howOld) {
+    public People(String name, String surname, int howOld) {
 
-        this.name = fullName;
+        this.name = name;
+        this.surname = surname;
         this.age = howOld;
 
     }
 
-    public People() {
-        this("Stas", 6);
-    }
-
-    public int GetAge(){
+    public int getAge(){
         return this.age;
     }
 
-    public String GetName() {
+    @Override
+    public String toString() {
 
-        return this.name;
+        return this.name + " " + this.surname;
 
     }
 }
