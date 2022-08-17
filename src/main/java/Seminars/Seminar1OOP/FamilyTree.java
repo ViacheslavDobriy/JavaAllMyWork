@@ -1,7 +1,6 @@
 package Seminars.Seminar1OOP;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,6 +27,14 @@ public class FamilyTree {
         People man5 = new Woman("Liza", "Lee", 3);
         People man6 = new Woman("ALina", "Lee", 29);
 
+        Relation rel1 = new Relation(man1, man2, "Adopted");
+        Relation rel2 = new Relation(man4, man3, "Parent");
+        Relation rel3 = new Relation(man1, man3, "Brother");
+        Relation rel4 = new Relation(man3, man5, "Child");
+        Relation rel5 = new Relation(man3, man6, "Spouse");
+        Relation rel6 = new Relation(man6, man5, "Child");
+        Relation rel7 = new Relation(man4, man6, "Parent");
+
         List<People> allPeople = new ArrayList<>();
         allPeople.add(man1);
         allPeople.add(man2);
@@ -36,27 +43,14 @@ public class FamilyTree {
         allPeople.add(man5);
         allPeople.add(man6);
 
+        Research.showChildren("Oleg Lee", allPeople);
         System.out.println(allPeople);
-//        allPeople.sort((person1, person2) -> Integer.compare(person1.getAge(), person2.getAge())); // лямбда выражение
-//        Collections.sort(allPeople); // use implements Comparable. Descending order
-        allPeople.sort(new AgeComparator()); // use Class AgeComparator with implementation Comparator<People>. Ascending order
+        allPeople.sort(new ChildrenComparator());
         System.out.println(allPeople);
-        Relation rel1 = new Relation(man1, man2, "Adopted");
-        Relation rel2 = new Relation(man4, man3, "Parent");
-        Relation rel3 = new Relation(man1, man3, "Brother");
-        Relation rel4 = new Relation(man3, man5, "Child");
-        Relation rel5 = new Relation(man3, man6, "Spouse");
-        AllRelations rel = new AllRelations();
-        rel.addRelation(rel1);
-        rel.addRelation(rel2);
-        rel.addRelation(rel3);
-        rel.addRelation(rel4);
-        rel.addRelation(rel5);
-        rel.showTree();   // show all links
-//        System.out.println("----------------------------");
-//        Research.showAllRelations("Oleg Lee", rel); // all links with Oleg Lee
-//        System.out.println("----------------------------");
-//        Research.showChildren("Oleg Lee", rel);  // children of Oleg Lee
+
+        for (People person: allPeople) {
+            System.out.printf("%s has %d children\n",person.toString(), person.howManyChildren());
+        }
 
     }
 }
