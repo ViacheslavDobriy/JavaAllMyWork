@@ -5,33 +5,36 @@ import java.util.Objects;
 
 public class Research {
 
-    public static void showAllRelations(String fullName, AllRelations links) {
+    public static void showAllRelations(String fullName, List<People> tree) {
 
-        List<Relation> relations = links.getRelations();
+        for (People person: tree) {
 
-        for (Relation rel: relations) {
+            if(Objects.equals(person.toString(), fullName)) {
 
-            if(Objects.equals(rel.get2().toString(), fullName)) {
-
-                rel.showLink();
+                System.out.printf("%s has:\n", fullName);
+                for (var item: person.getLinks().entrySet()) {
+                    System.out.printf("%s %s\n", item.getKey().toString(), item.getValue().getTitle());
+                }
 
             }
         }
     }
 
-    public static void showChildren(String fullName, AllRelations links) {
+    public static void showChildren(String fullName, List<People> tree) {
 
-        List<Relation> relations = links.getRelations();
-        System.out.printf("Children of %s\n", fullName);
-        for (Relation rel: relations) {
+        for (People person: tree) {
 
-            if(Objects.equals(rel.get1().toString(), fullName) &&
-            Objects.equals(rel.getRel(),"Child")) {
+            if(Objects.equals(person.toString(), fullName)) {
 
-                System.out.println(rel.get2().toString());
+                System.out.printf("Children of %s:\n", person.toString());
+                for (var item: person.getLinks().entrySet()) {
 
+                    if (Objects.equals(item.getValue().getTitle(), Categories.CHILD.getTitle())) {
+
+                        System.out.printf("%s\n", item.getKey().toString());
+                    }
+                }
             }
         }
-
     }
 }
