@@ -9,18 +9,18 @@ public class Competition {
         TEAM1.InfoTeam();
         TEAM2.InfoTeam();
 
-        ObstacleCourse running = new Running();
+        ObstacleCourse runningEasy = new Running("Easy");
 
-        ObstacleCourse swimming = new Swimming();
+        ObstacleCourse runningMedium = new Running("Medium");
 
-        ObstacleCourse jumping = new Jumping();
+        ObstacleCourse runningHard = new Running("Hard");
 
 
-        System.out.printf("%s need %d power\n", running.GetObstacle(), running.GetPowerRequirements());
-        System.out.printf("%s need %d power\n", swimming.GetObstacle(), swimming.GetPowerRequirements());
-        System.out.printf("%s need %d power\n", jumping.GetObstacle(), jumping.GetPowerRequirements());
+        System.out.printf("%s need %d power\n", runningEasy.GetObstacle(), runningEasy.GetPowerRequirements());
+        System.out.printf("%s need %d power\n", runningMedium.GetObstacle(), runningMedium.GetPowerRequirements());
+        System.out.printf("%s need %d power\n", runningHard.GetObstacle(), runningHard.GetPowerRequirements());
 
-        LineOfCourses line = new LineOfCourses(running, swimming, jumping);
+        LineOfCourses line = new LineOfCourses(runningEasy, runningMedium, runningHard);
         line.Competition(TEAM1, TEAM2);
         line.WhoIsWinner(TEAM1, TEAM2);
 

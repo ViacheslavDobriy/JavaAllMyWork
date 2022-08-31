@@ -1,17 +1,28 @@
 package HomeWorks.HomeWork4;
 
-import java.util.Scanner;
-
 public class Running extends ObstacleCourse{
 
+    DataBase database = new DataBase();
+    String complexity;
+    public Running(String difficult) {
+
+        this.complexity = difficult;
+
+    }
     @Override
     public String GetObstacle() {
-        return "Running";
+        return "Running"+complexity;
     }
-
     @Override
-    public int GetPowerRequirements () {
-        return 20;
+    public int GetDistance() {
+
+        return database.GetDistance(complexity);
+
+    }
+    @Override
+    public int GetPowerRequirements() {
+
+        return database.GetDistance(complexity)/10;
     }
 
     @Override
@@ -20,19 +31,4 @@ public class Running extends ObstacleCourse{
         team.AfterObstacle(GetPowerRequirements());
 
     }
-
-    @Override
-    public String SetObstacle() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Insert name of obstacle");
-        return input.nextLine();
-    }
-
-    @Override
-    public int SetPowerRequirements() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Insert how many power of obstacle sportsmen need to spend for this obstacle!");
-        return input.nextInt();
-    }
-
 }
